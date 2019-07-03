@@ -33,5 +33,5 @@ services:
     volumes:
       - "./db/postgress/data:/var/lib/postgresql/data"
       - "./db/postgress/scripts:/docker-entrypoint-initdb.d"
-    environment:
+    #environment:
       #PGDATA: /tmp # windows
