@@ -1,0 +1,37 @@
+version: "3.3"
+
+services:
+  front:
+    build: "public/"
+    env_file:
+      - ./.env
+
+  back:
+    build: .
+    volumes:
+      - "./data:/workspace/data"
+    depends_on:
+      - db
+    env_file:
+      - ./.env
+
+  nginx:
+    image: nginx
+    ports:
+     - ${DOCKER_VIEW}:80
+    env_file:
+      - ./.env
+    depends_on:
+      - front
+      - back
+    volumes:
+      - "./nginx:/home_nginx"
+    command: sh /home_nginx/run_nginx.sh
+
+  db:
+    image: postgres
+    volumes:
+      - "./db/postgress/data:/var/lib/postgresql/data"
+      - "./db/postgress/scripts:/docker-entrypoint-initdb.d"
+    environment:
+      #PGDATA: /tmp # windows

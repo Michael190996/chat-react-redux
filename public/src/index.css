@@ -1,0 +1,23 @@
+#window {
+  overflow-y: auto;
+  position: fixed;
+  width: 100%;
+  height: calc(100% - 1.5em - 0.9rem);
+}
+
+#window .card {
+  border: none
+}
+
+#window .card .card-body {
+  padding: 0.55rem;
+  width: 90%;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #656565;
+}
+
+#message {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
